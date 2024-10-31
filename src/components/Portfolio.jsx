@@ -6,10 +6,15 @@ import { Heading, Subheading } from '@/components/Text'
 import { image } from '@/sanity/image'
 import * as Headless from '@headlessui/react'
 import { clsx } from 'clsx'
-import { useMotionValueEvent, useScroll, useSpring } from 'framer-motion'
+import {
+  motion,
+  useMotionValueEvent,
+  useScroll,
+  useSpring,
+} from 'framer-motion'
 import { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import useMeasure from 'react-use-measure'
-import { FadeIn, StaggerWrapper } from './Animations'
+import { StaggerWrapper } from './Animations'
 function PortfolioCard({ project, children, bounds, scrollX, ...props }) {
   let ref = useRef(null)
 
@@ -47,8 +52,13 @@ function PortfolioCard({ project, children, bounds, scrollX, ...props }) {
 
   return (
     <Link href={project.slug && `/projects/${project.slug}`}>
-      <FadeIn
+      <motion.div
         ref={ref}
+        variants={{
+          hidden: { opacity: 0, y: 24 },
+          visible: { opacity: 1, y: 0 },
+        }}
+        transition={{ duration: 0.25, ease: 'easeIn' }}
         style={{ opacity }}
         {...props}
         className="relative flex aspect-[11/16] w-[20rem] shrink-0 snap-start scroll-ml-[var(--scroll-padding)] flex-col justify-end overflow-hidden rounded-4xl shadow-lg sm:aspect-[5/4] sm:w-[36rem]"
@@ -90,7 +100,7 @@ function PortfolioCard({ project, children, bounds, scrollX, ...props }) {
             </div>
           )}
         </figure>
-      </FadeIn>
+      </motion.div>
     </Link>
   )
 }
