@@ -38,9 +38,9 @@ function Header() {
             to my work.
           </p>
           <p className="mt-5 text-sm/6 text-gray-600">
-            So, if you're looking for a developer who brings equal parts logic
-            and laughter, creativity and code, wit and web wizardry – you're in
-            the right place.
+            So, if you&apos;re looking for a developer who brings equal parts
+            logic and laughter, creativity and code, wit and web wizardry –
+            you&apos;re in the right place.
           </p>
         </div>
         <div className="relative justify-self-center">
